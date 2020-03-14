@@ -30,6 +30,11 @@ public class HttpServer {
 
     final ActorMaterializer materializer = ActorMaterializer.create(system);
 
+        final CompletionStage<ServerBinding> binding = http.bindAndHandle(
+                routeFlow,
+                ConnectHttp.toHost("localhost", 8080),
+                materializer
+        );
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s", "/servers/s".getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
