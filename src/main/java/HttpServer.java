@@ -10,7 +10,7 @@ import akka.http.javadsl.server.AllDirectives;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
+import akka.actor.ActorSystem;
 import static akka.http.javadsl.server.Directives.parameter;
 
 
@@ -22,6 +22,7 @@ public class HttpServer {
     int port = in.nextInt();
 
     ActorSystem = ActorSystem.create("dadwqdx");
+    storeActor = system.acto
 
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
