@@ -17,7 +17,7 @@ public class HttpServer {
     CompletionStage<HttpResponse> fetch(String url) {
         return http.singleRequest(HttpRequest.create(url));
     }
-   
+
 
     ActorSystem system = ActorSystem.create("routes");
     final Http http = Http.get(system);
