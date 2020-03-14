@@ -9,12 +9,20 @@ import akka.http.javadsl.server.AllDirectives;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import static akka.http.javadsl.server.Directives.parameter;
 
 
 
 public class HttpServer {
+    public static void main(String[] args) throws KeeperException, InterruptedException{
+
+    Scanner in = new Scanner(System.in);
+    int port = in.nextInt();
+
+    ActorSystem = ActorSystem.create("dadwqdx");
+
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s", "/servers/s".getBytes(),
