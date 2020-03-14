@@ -6,6 +6,9 @@ import akka.stream.ActorMaterializer;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 import akka.http.javadsl.server.AllDirectives;
+
+import java.util.List;
+
 import static akka.http.javadsl.server.Directives.parameter;
 
 
@@ -14,7 +17,7 @@ public class HttpServer {
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s",
-        “data”.getBytes(),
+        .getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL
 );
