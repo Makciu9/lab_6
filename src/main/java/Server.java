@@ -2,6 +2,8 @@ import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 
+import static akka.http.javadsl.server.Directives.route;
+
 public class Server {
 
     ActorSystem system = ActorSystem.create("routes");
@@ -54,11 +56,7 @@ for(
                                     paramter("count", (count) -> (url, count)))
         )
         );
-
-
-
-
-        }
+}
 }
 
 
