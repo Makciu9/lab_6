@@ -35,6 +35,7 @@ for (String s : servers) {
                int sessionTimeout,
                Watcher watcher
     )
+    public Ro
         route(
                 path("semaphore", () ->
                         route(
