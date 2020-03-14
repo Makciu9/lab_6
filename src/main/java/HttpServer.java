@@ -23,7 +23,7 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
 
 
 
-    List<String> servers = zoo.getChildren("/servers", 
+    List<String> servers = zoo.getChildren("/servers",
      for (String s : servers) {
         byte[] data = zoo.getData("/servers/" + s, false, null);
         System.out.println("server " + s + " data=" + new String(data));
