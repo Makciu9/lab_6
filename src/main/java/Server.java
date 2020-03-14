@@ -2,7 +2,8 @@ import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 
-import static akka.http.javadsl.server.Directives.route;
+import static akka.http.javadsl.server.Directives.parameter;
+
 
 public class Server {
 
@@ -52,8 +53,8 @@ for(
         return
               route(
                       req(() ->
-                              paramter("url", (url) ->
-                                    paramter("count", (count) -> (url, count)))
+                              parameter("url", (url) ->
+                                    parameter("count", (count) -> (url, count)))
         )
         );
 }
