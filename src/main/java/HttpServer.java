@@ -1,4 +1,5 @@
 import akka.actor.ActorSystem;
+import akka.actor.Props;
 import akka.http.javadsl.Http;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.server.Route;
@@ -22,7 +23,7 @@ public class HttpServer {
     int port = in.nextInt();
 
     ActorSystem = ActorSystem.create("dadwqdx");
-    storeActor = system.acto
+    storeActor = system.actorOf(Props.create())
 
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
