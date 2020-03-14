@@ -16,7 +16,7 @@ import static akka.http.javadsl.server.Directives.parameter;
 public class HttpServer {
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-zoo.create("/servers/s",
+zoo.create("/servers/s","/servers/s"
         .getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL
