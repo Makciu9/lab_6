@@ -19,48 +19,45 @@ System.out.println("Server online at http://localhost:8080/\nPress RETURN to sto
 System.in.read();
 binding
         .thenCompose(ServerBinding::unbind)
-            .thenAccept(unbound -> system.terminate());
+            .
+
+    thenAccept(unbound ->system.terminate());
 
     ZooKeeper zoo = new ZooKeeper("1MB27.0.0.1MB:21MB81MB", 3000, this);
 zoo.create("/servers/s",
-        “data”.getBytes(),
+        “data”.
+
+    getBytes(),
+
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
     CreateMode.EPHEMERAL_SEQUENTIAL
 );
     List<String> servers = zoo.getChildren("/servers", this);
-for (String s : servers) {
+for(
+    String s :servers)
+
+    {
         byte[] data = zoo.getData("/servers/" + s, false, null);
         System.out.println("server " + s + " data=" + new String(data));
 
-    ZooKeeper(String connectString,
-               int sessionTimeout,
-               Watcher watcher
+        ZooKeeper(String connectString,
+        int sessionTimeout,
+        Watcher watcher
     )
+    }
+
     public Route createRoute(){
         return
-        }
-
               route(
                       req(() ->
-                                get( () -> {
-                                    Future<Object> result = Patterns.ask(testPackageActor,
-                                            SemaphoreActor.makeRequest(), 5000);
-                                    return completeOKWithFuture(result, Jackson.marshaller());
-                                }))),
-                path("test", () ->
-                        route(
-                                post(() ->
-                                        entity(Jackson.unmarshaller(TestPackageMsg.class), msg -> {
-                                            testPackageActor.tell(msg, ActorRef.noSender());
-                                            return complete("Test started!");
-                                        })))),
-                path("put", () ->
-                        get(() ->
-                                parameter("key", (key) ->
-                                        parameter("value", (value) ->
-                                        {
-                                            storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
-                                            return complete("value saved to store ! key=" + key + " value=" + value);
+                              paramter("url", (url)) ->
+                                    paramter("count", (count) -> (url, count)))
+
+
+
 
         }
 }
+
+
+
