@@ -26,6 +26,9 @@ public class HttpServer {
     ActorSystem system = ActorSystem.create("dadwqdx");
     storeActor = system.actorOf(Props.create(StoreServer.class));
 
+    final Http http = Http.get(system);
+
+    final ActorMaterializer materializer = ActorMaterializer.create(system);
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s", "/servers/s".getBytes(),
