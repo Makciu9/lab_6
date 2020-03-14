@@ -40,7 +40,7 @@ public class HttpServer {
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", 8080),
+                ConnectHttp.toHost("localhost", port),
                 materializer
         );
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
