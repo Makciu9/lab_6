@@ -17,8 +17,8 @@ public class HttpServer {
    zoo = new ZooKeeper(String connectString,
                int sessionTimeout,
                Watcher watcher
-    )
-        
+    );
+
 
 
 
