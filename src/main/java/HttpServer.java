@@ -27,8 +27,9 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
     List<String> servers = zoo.getChildren("/servers", a-> {
         List<String> servers = new ArrayList<>();
         try{
-            
+            //получаем сервисы
         }
+        
     }
 
      for (String s : servers) {
