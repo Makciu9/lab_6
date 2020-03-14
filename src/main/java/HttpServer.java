@@ -32,7 +32,7 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
         catch (KeeperException| InterruptedException e) {
             e.printStackTrace();
         }
-    }
+    });
 
      for (String s : servers) {
         byte[] data = zoo.getData("/servers/" + s, false, null);
