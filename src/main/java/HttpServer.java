@@ -14,10 +14,11 @@ public class HttpServer {
 
 
 
-   zoo ZooKeeper(String connectString,
+   zoo = new ZooKeeper(String connectString,
                int sessionTimeout,
                Watcher watcher
     )
+        
 
 
 
