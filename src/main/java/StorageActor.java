@@ -7,7 +7,6 @@ import java.util.Map;
 import java.util.Random;
 
 public class StoreActor extends AbstractActor {
-        private Map<String, String> store = new HashMap<>();
     private List<String> listServers;
 
     @Override
