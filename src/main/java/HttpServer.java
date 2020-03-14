@@ -7,6 +7,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 import akka.http.javadsl.server.AllDirectives;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static akka.http.javadsl.server.Directives.parameter;
@@ -23,7 +24,12 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
 
 
 
-    List<String> servers = zoo.getChildren("/servers", a-> 
+    List<String> servers = zoo.getChildren("/servers", a-> {
+        List<String> servers = new ArrayList<>();
+        try{
+            
+        }
+    }
 
      for (String s : servers) {
         byte[] data = zoo.getData("/servers/" + s, false, null);
