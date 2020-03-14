@@ -6,10 +6,13 @@ import static akka.http.javadsl.server.Directives.parameter;
 
 
 
-public class Server {
+public class HttpServer {
 
 
-                                        
+    final Http http = Http.get(context().system());
+    CompletionStage<HttpResponse> fetch(String url) {
+        return http.singleRequest(HttpRequest.create(url));
+    }
 
 
     ActorSystem system = ActorSystem.create("routes");
