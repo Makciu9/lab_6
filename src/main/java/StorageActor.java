@@ -20,7 +20,7 @@ public class StoreActor extends AbstractActor {
                     })
                     .match(GetRandomServer.class, req -> {
                           String ranS = getRanS();
-                          sender().tell(ranS, store.get(req.getKey())), self());
+                          sender().tell(ranS,  self());
 
     }).build();
 
