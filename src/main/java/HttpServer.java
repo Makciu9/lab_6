@@ -23,7 +23,7 @@ public class HttpServer {
     int port = in.nextInt();
 
     ActorSystem = ActorSystem.create("dadwqdx");
-    storeActor = system.actorOf(Props.create())
+    storeActor = system.actorOf(Props.create(StoreServer.class));
 
 
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
