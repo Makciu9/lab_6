@@ -1,3 +1,4 @@
+import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.ZooKeeper;
 
@@ -35,10 +36,12 @@ for (String s : servers) {
                int sessionTimeout,
                Watcher watcher
     )
-    public Route cre
-        route(
-                path("semaphore", () ->
-                        route(
+    public Route createRoute(){
+        return
+        }
+
+              route(
+                      req(() ->
                                 get( () -> {
                                     Future<Object> result = Patterns.ask(testPackageActor,
                                             SemaphoreActor.makeRequest(), 5000);
@@ -58,5 +61,6 @@ for (String s : servers) {
                                         {
                                             storeActor.tell(new StoreActor.StoreMessage(key, value), ActorRef.noSender());
                                             return complete("value saved to store ! key=" + key + " value=" + value);
-                                        })))),
+
+        }
 }
