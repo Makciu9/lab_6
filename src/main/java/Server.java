@@ -54,7 +54,8 @@ for(
               route(
                       req(() ->
                               parameter("url", (url) ->
-                                    parameter("count", (count) -> (url, count)))
+                                    parameter("count", (count) -> (url, count))
+        )
         )
         );
 }
