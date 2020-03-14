@@ -29,7 +29,9 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
         try{
             //получаем сервисы
         }
-        
+        catch (KeeperException| InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 
      for (String s : servers) {
