@@ -45,7 +45,10 @@ public class HttpServer {
         );
         System.out.println("start");
         System.in.read();
-        
+        binding
+                .thenCompose(ServerBinding::unbind)
+                .thenAccept(unbound -> system.terminate());
+
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s", "/servers/s".getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
