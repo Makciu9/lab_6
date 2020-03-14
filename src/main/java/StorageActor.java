@@ -14,7 +14,7 @@ public class StoreActor extends AbstractActor {
                         store.put(m.getKey(), m.getValue());
                         System.out.println("receive message! " + m.toString());
                     })
-                    .match(.class, req -> sender().tell(
+                    .match(GetRandomServer.class, req -> sender().tell(
                             new StoreMessage(req.getKey(), store.get(req.getKey())), self())
                     ).build();
         }
