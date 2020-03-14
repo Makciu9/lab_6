@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
-public class StoreActor extends AbstractActor {
+public class StorageActor extends AbstractActor {
     private List<String> listServers;
 
     @Override
