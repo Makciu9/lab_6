@@ -43,6 +43,9 @@ public class HttpServer {
                 ConnectHttp.toHost("localhost", port),
                 materializer
         );
+        System.out.println("start");
+        System.in.read();
+        
     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
 zoo.create("/servers/s", "/servers/s".getBytes(),
     ZooDefs.Ids.OPEN_ACL_UNSAFE ,
