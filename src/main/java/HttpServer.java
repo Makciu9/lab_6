@@ -1,3 +1,4 @@
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 import akka.http.javadsl.Http;
@@ -18,11 +19,11 @@ import static akka.http.javadsl.server.Directives.parameter;
 
 public class HttpServer {
     public static void main(String[] args) throws KeeperException, InterruptedException{
-
+    private ActorRef storeActor;
     Scanner in = new Scanner(System.in);
     int port = in.nextInt();
 
-    ActorSystem = ActorSystem.create("dadwqdx");
+    ActorSystem system = ActorSystem.create("dadwqdx");
     storeActor = system.actorOf(Props.create(StoreServer.class));
 
 
