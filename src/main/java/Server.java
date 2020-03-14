@@ -56,7 +56,7 @@ for(
                               parameter("url", (url) ->
                                     parameter("count", (count) -> {
                                         if (count == 0) System.out.print("end");
-                                        
+                                        return count == 0? 
                                     }
 
         )
