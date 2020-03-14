@@ -27,7 +27,7 @@ public class StoreActor extends AbstractActor {
 }
 
     private String getRanS() {
-        return listServers.get(Random((listServers.size())))
+        return listServers.get(random((listServers.size())))
     }
 
 }
