@@ -1,9 +1,9 @@
 import akka.http.javadsl.server.Route;
 import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
-
+import akka.http.javadsl.server.AllDirectives;
 import static akka.http.javadsl.server.Directives.parameter;
-import static akka.http.javadsl.server.Directives.route;
+
 
 
 public class Server {
