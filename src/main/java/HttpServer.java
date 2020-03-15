@@ -111,22 +111,24 @@ public class HttpServer extends //AllDirectives
                   route(
                           req(() ->
                                   parameter("url", (url) ->
-                                          parameter("count", (count) ->
-                                                      if (count <= 0 ) {
-                                                          System.out.print("end");
-                                                          return completeWithFuture(url);
-                                                      } else {
-                                                          count-=1;
-                                                          return completeWithFuture(
-                                                                  Patterns.ask(storeActor, "", Duration.ofSeconds(10))
-                                                                          .thenApply(m -> m)
-                                                                          .thenCompose(m -> m + "/ | /" + r));}
-                                                  }
-                                          )
-                                  )
+                                          parameter("count", (count) -> new Request(url, count)))
                           )
                   );
-      }*/
+      }
+          private SortRequst(Request r){
+          if (r.count <= 0){
+              System.out.println("END");
+              return completeWithFuture(fetch(r.getUrl()));
+          } else {
+              Request.minus();
+              return completeWithFuture(
+                      Patterns.ask(storeActor, "", Duration.ofSeconds(10))
+                              .thenApply(m -> m)
+                              .thenCompose(m -> m + "/ | /" + r.getCount()));}
+
+          }
+          }
+
 
 
 

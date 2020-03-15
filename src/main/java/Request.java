@@ -12,6 +12,10 @@ public class Request {
         this.count = count;
     }
 
+    public static void minus() {
+       
+    }
+
     public int getCount(){
         return count;
     }
