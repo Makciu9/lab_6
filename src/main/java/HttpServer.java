@@ -30,6 +30,7 @@ import static akka.http.javadsl.server.Directives.completeWithFuture;
 public class HttpServer extends AllDirectives{
     private static ActorRef storeActor;
     private static Http http;
+    private static final String LOCALHOST = "localhost";
 
     public static void main(String[] args) throws KeeperException, InterruptedException {
 
@@ -49,10 +50,10 @@ public class HttpServer extends AllDirectives{
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost("localhost", port),
+                ConnectHttp.toHost(LOCALHOST, port),
                 materializer
         );
-        System.out.println("start");
+        System.out.println("start" + port);
         System.in.read();
         binding
                 .thenCompose(ServerBinding::unbind)
