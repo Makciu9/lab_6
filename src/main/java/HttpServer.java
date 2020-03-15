@@ -15,6 +15,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 import akka.http.javadsl.server.AllDirectives;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,7 +33,7 @@ public class HttpServer extends AllDirectives {
     private static Http http;
     private static final String LOCALHOST = "localhost";
     private static int port;
-    public static void main(String[] args) throws KeeperException, InterruptedException {
+    public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
 
         Scanner in = new Scanner(System.in);
         port = in.nextInt();
@@ -90,7 +91,7 @@ public class HttpServer extends AllDirectives {
 
 
 
-    public static class ZooInit implements Watcher {
+    public class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
         private final ActorRef store;
