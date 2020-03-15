@@ -110,9 +110,9 @@ public class HttpServer extends AllDirectives {
   //                  CreateMode.EPHEMERAL_SEQUENTIAL);
 //
       //  }
-        public void createZoo(){
-            String path = zoo.create("/servers" + LOCALHOST +":" + port,
-                    port.getBytes(),
+        public void createZoo() throws KeeperException, InterruptedException {
+            String path = zoo.create("/servers" + LOCALHOST +":" + Integer.toString(port).getBytes(),
+                    Integer.toString(port).getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
         }
@@ -170,9 +170,10 @@ public class HttpServer extends AllDirectives {
                                   parameter("url", (url) ->
                                           parameter("count", (count) -> SortRequst(new Request(url, count)))
                           )
+                  )
                   );
       }
-          private <completeWithFuture> SortRequst(Request r){
+          private SortRequst(Request r){
           if (r.count <= 0){
               System.out.println("END");
               return completeWithFuture(fetch(r.getUrl()));
