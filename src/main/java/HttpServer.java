@@ -119,7 +119,7 @@ public class HttpServer extends AllDirectives {
                     System.out.println("Get actor");
                     List<String> servers = zoo.getChildren("/servers", this);
                     System.out.println(servers);
-                    
+                    store.tell(new )
 
                 } catch (KeeperException | InterruptedException e) {
                     e.printStackTrace();
