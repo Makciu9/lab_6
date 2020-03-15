@@ -41,8 +41,8 @@ public class HttpServer extends AllDirectives {
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
-
         
+
         http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
