@@ -106,8 +106,8 @@ public class HttpServer extends AllDirectives {
             ZooKeeper zoo = new ZooKeeper("1", 3000, this);
             zoo.create("/servers/s", "/servers/s".getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                    CreateMode.EPHEMERAL_SEQUENTIAL
-            );
+                    CreateMode.EPHEMERAL_SEQUENTIAL);
+            
         }
 
 
@@ -119,16 +119,16 @@ public class HttpServer extends AllDirectives {
                     System.out.println("Get actor");
                     List<String> servers = zoo.getChildren("/servers", this);
                     System.out.println(servers);
-                    store.tell(new )
+                    store.tell(new StoreServer(servers), ActorRef.noSender());
 
                 } catch (KeeperException | InterruptedException e) {
                     e.printStackTrace();
                 }
             });
 
-            for (String s : servers) {
-                byte[] data = zoo.getData("/servers/" + s, false, null);
-                System.out.println("server " + s + " data=" + new String(data));
+            //for (String s : servers) {
+               // byte[] data = zoo.getData("/servers/" + s, false, null);
+             //   System.out.println("server " + s + " data=" + new String(data));
             }
 
 
@@ -180,7 +180,7 @@ public class HttpServer extends AllDirectives {
           } else {
               r.next();
               return completeWithFuture(
-                      Patterns.ask(storeActor, GetRandomServer.class, Duration.ofSeconds(10))
+                      Patterns.ask(storeActor, //GetRandomServer.class, Duration.ofSeconds(10))
                               .thenApply(m -> m)
                               .thenCompose(req -> fetch(req + r.url + r.count)));}
           }
