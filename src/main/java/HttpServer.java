@@ -90,7 +90,17 @@ public class HttpServer extends AllDirectives {
 
 
 
-    public static class ReffWatSer implements Watcher {
+    public static class ZooInit implements Watcher {
+
+        private final ZooKeeper zoo;
+        private final ActorRef store;
+        private final Http http;
+
+        ZooInit(ZooKeeper zoo, ActorRef store, Http http) throws InterruptedException, KeeperException {
+            this.zoo = zoo;
+            this.store = store;
+            this.http = http;
+        }
 
         public static void createZoo() throws KeeperException, InterruptedException {
             ZooKeeper zoo = new ZooKeeper("1", 3000, this);
@@ -106,6 +116,10 @@ public class HttpServer extends AllDirectives {
            // List<String> servers = zoo.getChildren("/servers", a -> {
               //  List<String> servers = new ArrayList<>();
                 try {
+                    System.out.println("Get actor");
+                    List<String> servers = zoo.getChildren("/servers", this);
+                    System.out.println(servers);
+                    store.tell(new AddServer(servers),)
 
                 } catch (KeeperException | InterruptedException e) {
                     e.printStackTrace();
