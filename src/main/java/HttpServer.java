@@ -22,6 +22,7 @@ import java.util.concurrent.CompletionStage;
 import akka.actor.ActorSystem;
 
 import static akka.http.javadsl.server.Directives.*;
+import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
 public class HttpServer extends //AllDirectives
@@ -90,7 +91,7 @@ public class HttpServer extends //AllDirectives
                                         if (count == 0){
                                             System.out.print("end");
                                             completeWithFuture(url);
-                                        } else 
+                                        } else completeWithFuture
 
 
                                     }
