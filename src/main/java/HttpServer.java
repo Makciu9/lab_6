@@ -85,23 +85,24 @@ public class HttpServer extends //AllDirectives
                 return http.singleRequest(HttpRequest.create(url));
             }
 
-        private  Route createRoute(){
-        return route
-                      req(() ->
-                              parameter("url", (url) ->
+        private  Route createRoute() {
+            return route(
+                    req(() ->
+                            parameter("url", (url) ->
                                     parameter("count", (count) -> {
-                                        if (count == 0){
-                                            System.out.print("end");
-                                            completeWithFuture(url);
-                                        } else completeWithFuture(
-                                           Patterns.ask(storeActor, "", Duration.ofSeconds(10))
-                                           .thenApply(m -> m )
-                                           .thenCompose(m -> m +"/ | /" + r))
-                                    }
+                                                if (count == 0) {
+                                                    System.out.print("end");
+                                                   return completeWithFuture(url);
+                                                } else completeWithFuture(
+                                                        Patterns.ask(storeActor, "", Duration.ofSeconds(10))
+                                                                .thenApply(m -> m)
+                                                                .thenCompose(m -> m + "/ | /" + r))
+                                            }
                                     )
-                              )
-                      )
-        );
+                            )
+                    )
+            );
+        }
 
         )
         )
