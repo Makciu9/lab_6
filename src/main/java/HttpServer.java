@@ -21,7 +21,7 @@ import java.util.concurrent.CompletionStage;
 
 import akka.actor.ActorSystem;
 import static akka.http.javadsl.server.Directives.parameter;
-
+import static akka.http.javadsl.server.Directives.route;
 
 
 public class HttpServer extends //AllDirectives
@@ -74,10 +74,7 @@ public class HttpServer extends //AllDirectives
         }
 
 
-
-
-
-
+    }
 
         private  Route createRoute(){
         return route(
@@ -93,7 +90,7 @@ public class HttpServer extends //AllDirectives
         )
         );
 }
-}
+
 
 
 }
