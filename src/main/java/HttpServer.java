@@ -59,14 +59,14 @@ public class HttpServer extends AllDirectives{
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
 
-        ZooKeeper zoo = new ZooKeeper("1", 3000, this);
+       /* ZooKeeper zoo = new ZooKeeper("1", 3000, this);
         zoo.create("/servers/s", "/servers/s".getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL
         );
     }
 
-        
+
         List<String> servers = zoo.getChildren("/servers", a -> {
             List<String> servers = new ArrayList<>();
             try {
@@ -79,10 +79,13 @@ public class HttpServer extends AllDirectives{
         for (String s : servers) {
             byte[] data = zoo.getData("/servers/" + s, false, null);
             System.out.println("server " + s + " data=" + new String(data));
-        }
-
-
+        }*/
+       
     }
+
+
+
+
 
 
           //  final Http http = Http.get(context().system());
@@ -129,7 +132,7 @@ public class HttpServer extends AllDirectives{
               return completeWithFuture(
                       Patterns.ask(storeActor, GetRandomServer.class, Duration.ofSeconds(10))
                               .thenApply(m -> m)
-                              .thenCompose(req -> fetch(re + r.url + r.count)));}
+                              .thenCompose(req -> fetch(req + r.url + r.count)));}
           }
           }
 
