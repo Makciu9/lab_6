@@ -24,7 +24,8 @@ import static akka.http.javadsl.server.Directives.parameter;
 
 
 
-public class HttpServer extends AllDirectives {
+public class HttpServer extends //AllDirectives
+        {
     public static void main(String[] args) throws KeeperException, InterruptedException {
         private ActorRef storeActor;
         Scanner in = new Scanner(System.in);
