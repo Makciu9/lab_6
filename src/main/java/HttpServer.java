@@ -90,7 +90,7 @@ public class HttpServer extends //AllDirectives
                     req(() ->
                             parameter("url", (url) ->
                                     parameter("count", (count) -> {
-                                                if (count == 0 ) {
+                                                if (count <= 0 ) {
                                                     System.out.print("end");
                                                    return completeWithFuture(url);
                                                 } else {
