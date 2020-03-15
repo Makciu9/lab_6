@@ -25,20 +25,20 @@ import static akka.http.javadsl.server.Directives.parameter;
 
 
 public class HttpServer {
-    public static void main(String[] args) throws KeeperException, InterruptedException{
-    private ActorRef storeActor;
-    Scanner in = new Scanner(System.in);
-    int port = in.nextInt();
+    public static void main(String[] args) throws KeeperException, InterruptedException {
+        private ActorRef storeActor;
+        Scanner in = new Scanner(System.in);
+        int port = in.nextInt();
 
-    ActorSystem system = ActorSystem.create("dadwqdx");
-    storeActor = system.actorOf(Props.create(StoreServer.class));
+        ActorSystem system = ActorSystem.create("dadwqdx");
+        storeActor = system.actorOf(Props.create(StoreServer.class));
 
-    final Http http = Http.get(system);
-    HttpServer app = HttpServer();
+        final Http http = Http.get(system);
+        HttpServer app = HttpServer();
 
 
-    final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow ;
+        final ActorMaterializer materializer = ActorMaterializer.create(system);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow;
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
@@ -51,35 +51,34 @@ public class HttpServer {
                 .thenCompose(ServerBinding::unbind)
                 .thenAccept(unbound -> system.terminate());
 
-    ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-zoo.create("/servers/s", "/servers/s".getBytes(),
-    ZooDefs.Ids.OPEN_ACL_UNSAFE ,
-    CreateMode.EPHEMERAL_SEQUENTIAL
-);
+        ZooKeeper zoo = new ZooKeeper("1", 3000, this);
+        zoo.create("/servers/s", "/servers/s".getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.EPHEMERAL_SEQUENTIAL
+        );
 
 
+        List<String> servers = zoo.getChildren("/servers", a -> {
+            List<String> servers = new ArrayList<>();
+            try {
+                //получаем сервисы
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
 
-    List<String> servers = zoo.getChildren("/servers", a-> {
-        List<String> servers = new ArrayList<>();
-        try{
-            //получаем сервисы
+        for (String s : servers) {
+            byte[] data = zoo.getData("/servers/" + s, false, null);
+            System.out.println("server " + s + " data=" + new String(data));
         }
-        catch (KeeperException| InterruptedException e) {
-            e.printStackTrace();
-        }
-    });
-
-     for (String s : servers) {
-        byte[] data = zoo.getData("/servers/" + s, false, null);
-        System.out.println("server " + s + " data=" + new String(data));
-    }
+    
 
 
 
 
 
 
-    public Route createRoute(){
+        private  Route createRoute(){
         return route(
                       req(() ->
                               parameter("url", (url) ->
@@ -94,6 +93,8 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
         );
 }
 }
+
+
 }
 
 
