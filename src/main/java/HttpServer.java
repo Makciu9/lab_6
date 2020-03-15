@@ -42,7 +42,6 @@ public class HttpServer extends AllDirectives {
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
         
-
         http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
