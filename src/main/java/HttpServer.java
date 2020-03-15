@@ -46,7 +46,8 @@ public class HttpServer extends AllDirectives {
         http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        HttpServer app = new HttpServer();
+        ///HttpServer app = new HttpServer();
+        
 
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
