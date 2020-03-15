@@ -90,13 +90,15 @@ public class HttpServer extends //AllDirectives
                     req(() ->
                             parameter("url", (url) ->
                                     parameter("count", (count) -> {
-                                                if (count == 0) {
+                                                if (count == 0 ) {
                                                     System.out.print("end");
                                                    return completeWithFuture(url);
-                                                } else return completeWithFuture(
+                                                } else {
+                                                    count-=1;
+                                                    return completeWithFuture(
                                                         Patterns.ask(storeActor, "", Duration.ofSeconds(10))
                                                                 .thenApply(m -> m)
-                                                                .thenCompose(m -> m + "/ | /" + r))
+                                                                .thenCompose(m -> m + "/ | /" + r));}
                                             }
                                     )
                             )
