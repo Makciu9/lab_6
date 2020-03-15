@@ -111,7 +111,7 @@ public class HttpServer extends //AllDirectives
                   route(
                           req(() ->
                                   parameter("url", (url) ->
-                                          parameter("count", (count) -> new Request(url, count)))
+                                          parameter("count", (count) -> new SortRequstRequest(url, count)))
                           )
                   );
       }
@@ -122,7 +122,7 @@ public class HttpServer extends //AllDirectives
           } else {
               r.next();
               return completeWithFuture(
-                      Patterns.ask(storeActor, "", Duration.ofSeconds(10))
+                      Patterns.ask(storeActor, GetRandomServer.class, Duration.ofSeconds(10))
                               .thenApply(m -> m)
                               .thenCompose(m -> m + "/ | /" + r.getCount()));}
 
