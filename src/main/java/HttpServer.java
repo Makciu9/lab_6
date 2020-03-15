@@ -31,11 +31,11 @@ public class HttpServer extends AllDirectives {
     private static ActorRef storeActor;
     private static Http http;
     private static final String LOCALHOST = "localhost";
-
+    private static int port;
     public static void main(String[] args) throws KeeperException, InterruptedException {
 
         Scanner in = new Scanner(System.in);
-        int port = in.nextInt();
+        port = in.nextInt();
 
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
@@ -104,10 +104,10 @@ public class HttpServer extends AllDirectives {
 
         public static void createZoo() throws KeeperException, InterruptedException {
             ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-            zoo.create("/servers/s", "/servers/s".getBytes(),
+            zoo.create("/servers/" + LOCALHOST + ":" + port, port.getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
-            
+
         }
 
 
