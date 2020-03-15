@@ -120,7 +120,7 @@ public class HttpServer extends //AllDirectives
               System.out.println("END");
               return completeWithFuture(fetch(r.getUrl()));
           } else {
-              Request.minus();
+              r.next();
               return completeWithFuture(
                       Patterns.ask(storeActor, "", Duration.ofSeconds(10))
                               .thenApply(m -> m)
