@@ -113,6 +113,10 @@ public class HttpServer extends AllDirectives {
             System.out.println("server " + s + " data=" + new String(data));
         }
 
+        @Override
+        public void process(WatchedEvent event) {
+
+        }
     }
 
 
