@@ -38,7 +38,7 @@ public class HttpServer {
 
 
     final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute(). ;
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow ;
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
@@ -92,6 +92,7 @@ zoo.create("/servers/s", "/servers/s".getBytes(),
         )
         )
         );
+}
 }
 }
 
