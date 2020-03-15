@@ -34,7 +34,8 @@ public class HttpServer {
     storeActor = system.actorOf(Props.create(StoreServer.class));
 
     final Http http = Http.get(system);
-    
+    HttpServer app = HttpServer();
+
 
     final ActorMaterializer materializer = ActorMaterializer.create(system);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = ;
