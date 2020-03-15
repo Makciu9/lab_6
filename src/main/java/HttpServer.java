@@ -47,7 +47,7 @@ public class HttpServer extends AllDirectives {
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
         ///HttpServer app = new HttpServer();
-        ZooWatcher
+       
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
         ZooInit app = new ZooInit(zoo, storeActor, http);
 
