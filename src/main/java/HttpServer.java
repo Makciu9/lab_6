@@ -93,7 +93,7 @@ public class HttpServer extends //AllDirectives
                                                 if (count == 0) {
                                                     System.out.print("end");
                                                    return completeWithFuture(url);
-                                                } else completeWithFuture(
+                                                } else return completeWithFuture(
                                                         Patterns.ask(storeActor, "", Duration.ofSeconds(10))
                                                                 .thenApply(m -> m)
                                                                 .thenCompose(m -> m + "/ | /" + r))
