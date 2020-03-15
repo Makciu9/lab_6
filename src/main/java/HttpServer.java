@@ -27,22 +27,25 @@ import static akka.http.javadsl.server.Directives.*;
 import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
-public class HttpServer extends //AllDirectives
-        {
+public class HttpServer extends AllDirectives{
+    private static ActorRef storeActor;
+    private static Http http;
+
     public static void main(String[] args) throws KeeperException, InterruptedException {
-        private ActorRef storeActor;
+
         Scanner in = new Scanner(System.in);
         int port = in.nextInt();
 
-        ActorSystem system = ActorSystem.create("dadwqdx");
+        ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
-        final Http http = Http.get(system);
-        HttpServer app = HttpServer();
-
+        http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow;
+        HttpServer app = new HttpServer();
+
+
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
