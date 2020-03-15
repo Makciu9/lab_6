@@ -78,17 +78,21 @@ public class HttpServer extends //AllDirectives
 
 
           //  final Http http = Http.get(context().system());
-            //CompletionStage<HttpResponse> fetch(String url) {
-              //  return http.singleRequest(HttpRequest.create(url));
-            //}
+            CompletionStage<HttpResponse> fetch(String url) {
+                return http.singleRequest(HttpRequest.create(url));
+            }
 
         private  Route createRoute(){
         return route(
                       req(() ->
                               parameter("url", (url) ->
                                     parameter("count", (count) -> {
-                                        if (count == 0) System.out.print("end");
-                                        return count == 0? //передать:рандом и запрос
+                                        if (count == 0){
+                                            System.out.print("end");
+                                            CompletionStageFuture()
+
+                                        }
+
 
                                     }
 
