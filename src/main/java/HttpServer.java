@@ -104,7 +104,7 @@ public class HttpServer extends AllDirectives {
 
         public static void createZoo() throws KeeperException, InterruptedException {
             ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-            zoo.create("/servers/" + LOCALHOST + ":" + port, port.getBytes(),
+            zoo.create("/servers/" + LOCALHOST + ":" + port, LOCALHOST.getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
 
