@@ -99,22 +99,22 @@ public class HttpServer extends AllDirectives {
 
     public static class refWatcher implements Watcher {
 
-        List<String> servers = zoo.getChildren("/servers", a -> {
-            List<String> servers = new ArrayList<>();
-            try {
-
-            } catch (KeeperException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        });
-
-        for(String s :servers){
-            byte[] data = zoo.getData("/servers/" + s, false, null);
-            System.out.println("server " + s + " data=" + new String(data));
-        }
-
         @Override
         public void process(WatchedEvent event) {
+            List<String> servers = zoo.getChildren("/servers", a -> {
+                List<String> servers = new ArrayList<>();
+                try {
+
+                } catch (KeeperException | InterruptedException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            for (String s : servers) {
+                byte[] data = zoo.getData("/servers/" + s, false, null);
+                System.out.println("server " + s + " data=" + new String(data));
+            }
+
 
         }
     }
