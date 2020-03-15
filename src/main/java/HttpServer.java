@@ -76,6 +76,12 @@ public class HttpServer extends //AllDirectives
 
     }
 
+
+          //  final Http http = Http.get(context().system());
+            //CompletionStage<HttpResponse> fetch(String url) {
+              //  return http.singleRequest(HttpRequest.create(url));
+            //}
+
         private  Route createRoute(){
         return route(
                       req(() ->
