@@ -90,7 +90,7 @@ public class HttpServer extends AllDirectives {
 
 
 
-    public static class refWat implements Watcher {
+    public static class ReffWatSer implements Watcher {
 
         public static void createZoo() throws KeeperException, InterruptedException {
             ZooKeeper zoo = new ZooKeeper("1", 3000, this);
