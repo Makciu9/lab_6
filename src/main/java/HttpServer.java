@@ -64,12 +64,13 @@ public class HttpServer extends AllDirectives{
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL
         );
+    }
 
         //
         List<String> servers = zoo.getChildren("/servers", a -> {
             List<String> servers = new ArrayList<>();
             try {
-                //получаем сервисы
+
             } catch (KeeperException | InterruptedException e) {
                 e.printStackTrace();
             }
@@ -135,7 +136,7 @@ public class HttpServer extends AllDirectives{
 
 
 
-}
+
 
 
 
