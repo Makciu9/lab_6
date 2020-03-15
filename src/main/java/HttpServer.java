@@ -86,23 +86,25 @@ public class HttpServer extends AllDirectives {
     }
 
 
-     public static void createZoo() throws KeeperException, InterruptedException {
-     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-        zoo.create("/servers/s", "/servers/s".getBytes(),
-                ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                CreateMode.EPHEMERAL_SEQUENTIAL
-        );
-    }
 
 
 
 
     public static class refWat implements Watcher {
 
+        public static void createZoo() throws KeeperException, InterruptedException {
+            ZooKeeper zoo = new ZooKeeper("1", 3000, this);
+            zoo.create("/servers/s", "/servers/s".getBytes(),
+                    ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                    CreateMode.EPHEMERAL_SEQUENTIAL
+            );
+        }
+
+
         @Override
         public void process(WatchedEvent event) {
-            List<String> servers = zoo.getChildren("/servers", a -> {
-                List<String> servers = new ArrayList<>();
+           // List<String> servers = zoo.getChildren("/servers", a -> {
+              //  List<String> servers = new ArrayList<>();
                 try {
 
                 } catch (KeeperException | InterruptedException e) {
