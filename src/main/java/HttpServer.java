@@ -20,8 +20,8 @@ import java.util.Scanner;
 import java.util.concurrent.CompletionStage;
 
 import akka.actor.ActorSystem;
-import static akka.http.javadsl.server.Directives.parameter;
-import static akka.http.javadsl.server.Directives.route;
+
+import static akka.http.javadsl.server.Directives.*;
 
 
 public class HttpServer extends //AllDirectives
@@ -89,7 +89,7 @@ public class HttpServer extends //AllDirectives
                                     parameter("count", (count) -> {
                                         if (count == 0){
                                             System.out.print("end");
-                                            Comletion
+                                            completeWithFuture();
 
                                         }
 
