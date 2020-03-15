@@ -111,11 +111,11 @@ public class HttpServer extends //AllDirectives
                   route(
                           req(() ->
                                   parameter("url", (url) ->
-                                          parameter("count", (count) -> new SortRequstRequest(url, count)))
+                                          parameter("count", (count) -> SortRequst(new Request(url, count)))
                           )
                   );
       }
-          private SortRequst(Request r){
+          private <completeWithFuture> SortRequst(Request r){
           if (r.count <= 0){
               System.out.println("END");
               return completeWithFuture(fetch(r.getUrl()));
@@ -124,8 +124,7 @@ public class HttpServer extends //AllDirectives
               return completeWithFuture(
                       Patterns.ask(storeActor, GetRandomServer.class, Duration.ofSeconds(10))
                               .thenApply(m -> m)
-                              .thenCompose(m -> m + "/ | /" + r.getCount()));}
-
+                              .thenCompose(req -> fetch(re + r.url + r.count)));}
           }
           }
 
