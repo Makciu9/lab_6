@@ -15,6 +15,7 @@ import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
 import akka.http.javadsl.server.AllDirectives;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -93,9 +94,10 @@ public class HttpServer extends //AllDirectives
                                             System.out.print("end");
                                             completeWithFuture(url);
                                         } else completeWithFuture(
-                                              
-                                        )
-
+                                           Patterns.ask(storeActor, "", Duration.ofSeconds(10))
+                                           .thenApply(m -> m )
+                                           .thenCompose(m -> m +"/ | /" + r)
+                                       
 
                                     }
 
