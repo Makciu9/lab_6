@@ -40,7 +40,7 @@ public class HttpServer extends AllDirectives {
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
-        createZoo();
+
 
         http = Http.get(system);
 
@@ -97,7 +97,7 @@ public class HttpServer extends AllDirectives {
 
 
 
-    public static class refWatcher implements Watcher {
+    public static class refWat implements Watcher {
 
         @Override
         public void process(WatchedEvent event) {
