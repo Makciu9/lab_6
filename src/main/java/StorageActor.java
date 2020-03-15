@@ -14,13 +14,13 @@ public class StorageActor extends AbstractActor {
         public Receive createReceive() {
             return ReceiveBuilder.create()
                     .match(StoreServer.class, m -> this.listServers=m.getServerList())
-                    .match(AddServer.class){
-                        listServers.add(m.);
+                    .match(AddServer.class, m ->{
+                        listServers.add(m.getUrl());
                         System.out.println("receive message! " + m.toString());
                     })
                     .match(GetRandomServer.class, req -> {
                           String ranS = getRanS();
-            System.out.println("receive message! " + ranS);
+                          System.out.println("receive message! " + ranS);
                           sender().tell(ranS,  ActorRef.noSender());
 
     }).build();
