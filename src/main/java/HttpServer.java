@@ -96,10 +96,12 @@ public class HttpServer extends //AllDirectives
                                         } else completeWithFuture(
                                            Patterns.ask(storeActor, "", Duration.ofSeconds(10))
                                            .thenApply(m -> m )
-                                           .thenCompose(m -> m +"/ | /" + r)
-                                       
-
+                                           .thenCompose(m -> m +"/ | /" + r))
                                     }
+                                    )
+                              )
+                      )
+        );
 
         )
         )
