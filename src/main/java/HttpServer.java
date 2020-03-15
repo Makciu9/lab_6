@@ -91,7 +91,7 @@ public class HttpServer extends //AllDirectives
                                         if (count == 0){
                                             System.out.print("end");
                                             completeWithFuture(url);
-                                        } else completeWithFuture
+                                        } else completeWithFuture()
 
 
                                     }
