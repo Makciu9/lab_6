@@ -1,4 +1,5 @@
 import akka.actor.AbstractActor;
+import akka.actor.ActorRef;
 import akka.japi.pf.ReceiveBuilder;
 
 import java.util.HashMap;
@@ -13,13 +14,14 @@ public class StorageActor extends AbstractActor {
         public Receive createReceive() {
             return ReceiveBuilder.create()
                     .match(StoreServer.class, m -> this.listServers=m.getServerList())
-                    .match(){
-                        store.put(m.getKey(), m.getValue());
+                    .match(AddServer.class){
+                        listServers.add(m.);
                         System.out.println("receive message! " + m.toString());
                     })
                     .match(GetRandomServer.class, req -> {
                           String ranS = getRanS();
-                          sender().tell(ranS,  self());
+            System.out.println("receive message! " + ranS);
+                          sender().tell(ranS,  ActorRef.noSender());
 
     }).build();
 
