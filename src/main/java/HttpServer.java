@@ -27,7 +27,7 @@ import static akka.http.javadsl.server.Directives.*;
 import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
-public class HttpServer extends AllDirectives{
+public class HttpServer extends AllDirectives {
     private static ActorRef storeActor;
     private static Http http;
     private static final String LOCALHOST = "localhost";
@@ -39,6 +39,8 @@ public class HttpServer extends AllDirectives{
 
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
+
+        createZoo();
 
         http = Http.get(system);
 
@@ -80,10 +82,38 @@ public class HttpServer extends AllDirectives{
             byte[] data = zoo.getData("/servers/" + s, false, null);
             System.out.println("server " + s + " data=" + new String(data));
         }*/
-       
+
     }
 
 
+     public static void createZoo() throws KeeperException, InterruptedException {
+     ZooKeeper zoo = new ZooKeeper("1", 3000, this);
+        zoo.create("/servers/s", "/servers/s".getBytes(),
+                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+                CreateMode.EPHEMERAL_SEQUENTIAL
+        );
+    }
+
+
+
+
+    public static class refWatcher implements Watcher {
+
+        List<String> servers = zoo.getChildren("/servers", a -> {
+            List<String> servers = new ArrayList<>();
+            try {
+
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
+            }
+        });
+
+        for(String s :servers){
+            byte[] data = zoo.getData("/servers/" + s, false, null);
+            System.out.println("server " + s + " data=" + new String(data));
+        }
+
+    }
 
 
 
@@ -134,7 +164,7 @@ public class HttpServer extends AllDirectives{
                               .thenApply(m -> m)
                               .thenCompose(req -> fetch(req + r.url + r.count)));}
           }
-          }
+}
 
 
 
