@@ -130,9 +130,9 @@ public class HttpServer extends AllDirectives {
                 } catch (KeeperException | InterruptedException e) {
                     e.printStackTrace();
                 }
-            });
+            }
 
-      
+
 
 
 
