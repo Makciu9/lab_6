@@ -102,12 +102,18 @@ public class HttpServer extends AllDirectives {
             this.http = http;
         }
 
-        public static void createZoo() throws KeeperException, InterruptedException {
-            ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-            zoo.create("/servers/" + LOCALHOST + ":" + port, LOCALHOST.getBytes(),
+       // public static void createZoo() throws KeeperException, InterruptedException {
+        //    ZooKeeper zoo = new ZooKeeper("1", 3000, this);
+      //      zoo.create("/servers/" + LOCALHOST + ":" + port, LOCALHOST.getBytes(),
+    //                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+  //                  CreateMode.EPHEMERAL_SEQUENTIAL);
+//
+      //  }
+        public void createZoo(){
+            String path = zoo.create("/servers" + LOCALHOST +":" + port,
+                    port.getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
-
         }
 
 
@@ -116,7 +122,7 @@ public class HttpServer extends AllDirectives {
            // List<String> servers = zoo.getChildren("/servers", a -> {
               //  List<String> servers = new ArrayList<>();
                 try {
-                    System.out.println("Get actor");
+                    System.out.println("Get -> actor");
                     List<String> servers = zoo.getChildren("/servers", this);
                     System.out.println(servers);
                     store.tell(new StoreServer(servers), ActorRef.noSender());
@@ -126,15 +132,7 @@ public class HttpServer extends AllDirectives {
                 }
             });
 
-            //for (String s : servers) {
-               // byte[] data = zoo.getData("/servers/" + s, false, null);
-             //   System.out.println("server " + s + " data=" + new String(data));
-            }
-
-
-        }
-    }
-
+      
 
 
 
@@ -181,7 +179,7 @@ public class HttpServer extends AllDirectives {
               r.next();
               return completeWithFuture(
                       Patterns.ask(storeActor, //GetRandomServer.class, Duration.ofSeconds(10))
-                              .thenApply(m -> m)
+                              .thenApply(m -> (String) m)
                               .thenCompose(req -> fetch(req + r.url + r.count)));}
           }
 }
