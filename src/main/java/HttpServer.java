@@ -38,7 +38,7 @@ public class HttpServer {
 
 
     final ActorMaterializer materializer = ActorMaterializer.create(system);
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = ;
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app ;
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
