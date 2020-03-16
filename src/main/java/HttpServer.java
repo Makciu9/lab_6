@@ -44,17 +44,17 @@ public class HttpServer extends AllDirectives {
         ZooWatcher  zooWat = new ZooWatcher();
         http = Http.get(system);
 
-        final ActorMaterializer materializer = ActorMaterializer.create(system);
+        final ActorMaterializer materialize = ActorMaterializer.create(system);
 
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
         ZooInit app = new ZooInit(zoo, storeActor, http);
 
-        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materializer);
+        final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
                 ConnectHttp.toHost(LOCALHOST, port),
-                materializer
+                materialize
         );
         System.out.println("start" + port);
         System.in.read();
