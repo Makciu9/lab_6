@@ -172,9 +172,9 @@ public class HttpServer extends AllDirectives {
           } else {
               r.next();
               return completeWithFuture(
-                      Patterns.ask(storeActor, new GetRandomServer(), Duration.ofSeconds(10))
+                      Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(10))
                               .thenApply(m -> (String) m)
-                              .thenCompose(re -> fetch("http://" +re + "/?url="+  r.url +"&count=" + r.count)));}
+                              .thenCompose(re -> fetch("http://" +re + "/?url="+  r.url +"&count=" + r.count)))}
 
           }
 }
