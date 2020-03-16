@@ -164,7 +164,7 @@ public class HttpServer extends AllDirectives {
                   route(
                           req(() ->
                                   parameter("url", (url) ->
-                                          parameter("count", (count) -> SortRequst(new Request(url, count)))
+                                          parameter("count", (count) -> Requst(new Request(url, count)))
                           )
                   )
                   );
