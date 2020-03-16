@@ -112,7 +112,7 @@ public class HttpServer extends AllDirectives {
 
         }
 
-        
+        private void
         System.out.println("Get -> actor");
         List<String> servers = zoo.getChildren("/servers", this);
                 System.out.println(servers);
