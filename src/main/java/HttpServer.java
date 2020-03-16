@@ -33,7 +33,7 @@ public class HttpServer extends AllDirectives {
     private static Http http;
     private static final String LOCALHOST = "localhost";
     private static int port;
-    public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
+    public void main(String[] args) throws KeeperException, InterruptedException, IOException {
 
         Scanner in = new Scanner(System.in);
         port = in.nextInt();
@@ -87,11 +87,7 @@ public class HttpServer extends AllDirectives {
     }
 
 
-
-
-
-
-    public static class ZooInit implements Watcher {
+    public class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
         private final ActorRef store;
@@ -180,7 +176,7 @@ public class HttpServer extends AllDirectives {
           } else {
               r.next();
               return completeWithFuture(
-                      Patterns.ask(storeActor, new GetRandomServer.class, Duration.ofSeconds(10))
+                      Patterns.ask(storeActor, new GetRandomServer(), Duration.ofSeconds(10))
                               .thenApply(m -> (String) m)
                               .thenCompose(req -> fetch(req + r.url + r.count)));}
           }
