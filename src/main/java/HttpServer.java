@@ -168,7 +168,7 @@ public class HttpServer extends AllDirectives {
           private Route SortRequest(Request r){
           if (r.count <= 0){
               System.out.println("END");
-              return completeWithFuture(fetch(r.getUrl()));
+              return completeWithFuture(fetch(r.url));
           } else {
               r.next();
               return completeWithFuture(
