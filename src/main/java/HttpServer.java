@@ -29,6 +29,7 @@ public class HttpServer extends AllDirectives {
     private static Http http;
     private static final String LOCALHOST = "localhost";
     private static int port;
+
     public void main(String[] args) throws KeeperException, InterruptedException, IOException {
 
         Scanner in = new Scanner(System.in);
@@ -37,7 +38,7 @@ public class HttpServer extends AllDirectives {
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
-        ZooWatcher  zooWat = new ZooWatcher();
+        ZooWatcher zooWat = new ZooWatcher();
         http = Http.get(system);
 
         final ActorMaterializer materialize = ActorMaterializer.create(system);
@@ -83,6 +84,7 @@ public class HttpServer extends AllDirectives {
     }
 
 
+
     public class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
@@ -95,88 +97,96 @@ public class HttpServer extends AllDirectives {
             this.http = http;
         }
 
-       // public static void createZoo() throws KeeperException, InterruptedException {
+        // public static void createZoo() throws KeeperException, InterruptedException {
         //    ZooKeeper zoo = new ZooKeeper("1", 3000, this);
-      //      zoo.create("/servers/" + LOCALHOST + ":" + port, LOCALHOST.getBytes(),
-    //                ZooDefs.Ids.OPEN_ACL_UNSAFE,
-  //                  CreateMode.EPHEMERAL_SEQUENTIAL);
+        //      zoo.create("/servers/" + LOCALHOST + ":" + port, LOCALHOST.getBytes(),
+        //                ZooDefs.Ids.OPEN_ACL_UNSAFE,
+        //                  CreateMode.EPHEMERAL_SEQUENTIAL);
 //
-      //  }
+        //  }
         public void createZoo() throws KeeperException, InterruptedException {
-            String path = zoo.create("/servers" + LOCALHOST +":" + Integer.toString(port).getBytes(),
+            String path = zoo.create("/servers" + LOCALHOST + ":" + Integer.toString(port).getBytes(),
                     Integer.toString(port).getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
+
         }
+
+        
+        System.out.println("Get -> actor");
+        List<String> servers = zoo.getChildren("/servers", this);
+                System.out.println(servers);
+                store.tell(new StoreServer(servers), ActorRef.noSender());
+
 
 
         @Override
         public void process(WatchedEvent event) {
-           // List<String> servers = zoo.getChildren("/servers", a -> {
-              //  List<String> servers = new ArrayList<>();
-                try {
-                    System.out.println("Get -> actor");
-                    List<String> servers = zoo.getChildren("/servers", this);
-                    System.out.println(servers);
-                    store.tell(new StoreServer(servers), ActorRef.noSender());
+            // List<String> servers = zoo.getChildren("/servers", a -> {
+            //  List<String> servers = new ArrayList<>();
+            try {
+                System.out.println("Get -> actor");
+                List<String> servers = zoo.getChildren("/servers", this);
+                System.out.println(servers);
+                store.tell(new StoreServer(servers), ActorRef.noSender());
 
-                } catch (KeeperException | InterruptedException e) {
-                    e.printStackTrace();
-                }
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
             }
+        }
 
 
+        //  final Http http = Http.get(context().system());
+        CompletionStage<HttpResponse> fetch(String url) {
+            return http.singleRequest(HttpRequest.create(url));
+        }
 
-
-
-          //  final Http http = Http.get(context().system());
-            CompletionStage<HttpResponse> fetch(String url) {
-                return http.singleRequest(HttpRequest.create(url));
-            }
-
-      /*  private  Route createRoute() {
+        /*  private  Route createRoute() {
+              return
+                      route(
+                      req(() ->
+                              parameter("url", (url) ->
+                                      parameter("count", (count) -> {
+                                                  if (count <= 0 ) {
+                                                      System.out.print("end");
+                                                     return completeWithFuture(url);
+                                                  } else {
+                                                      count-=1;
+                                                      return completeWithFuture(
+                                                          Patterns.ask(storeActor, "", Duration.ofSeconds(10))
+                                                                  .thenApply(m -> m)
+                                                                  .thenCompose(m -> m + "/ | /" + r));}
+                                              }
+                                      )
+                              )
+                      )
+              );
+          }*/
+        public Route createRoute() {
             return
                     route(
-                    req(() ->
-                            parameter("url", (url) ->
-                                    parameter("count", (count) -> {
-                                                if (count <= 0 ) {
-                                                    System.out.print("end");
-                                                   return completeWithFuture(url);
-                                                } else {
-                                                    count-=1;
-                                                    return completeWithFuture(
-                                                        Patterns.ask(storeActor, "", Duration.ofSeconds(10))
-                                                                .thenApply(m -> m)
-                                                                .thenCompose(m -> m + "/ | /" + r));}
-                                            }
+                            req(() ->
+                                    parameter("url", (url) ->
+                                            parameter("count", (count) -> SortRequest(new Request(url, count)))
                                     )
                             )
-                    )
-            );
-        }*/
-      public  Route createRoute() {
-          return
-                  route(
-                          req(() ->
-                                  parameter("url", (url) ->
-                                          parameter("count", (count) -> SortRequest(new Request(url, count)))
-                          )
-                  )
-                  );
-      }
-          private Route SortRequest(Request r){
-          if (r.count <= 0){
-              System.out.println("END");
-              return completeWithFuture(fetch(r.url));
-          } else {
-              r.next();
-              return completeWithFuture(
-                      Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(10))
-                              .thenApply(m -> (String) m)
-                              .thenCompose(re -> fetch("http://" +re + "/?url="+  r.url +"&count=" + r.count)))}
+                    );
+        }
 
-          }
+        private Route SortRequest(Request r) {
+            if (r.count <= 0) {
+                System.out.println("END");
+                return completeWithFuture(fetch(r.url));
+            } else {
+                r.next();
+                return completeWithFuture(
+                        Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(10))
+                                .thenApply(m -> (String) m)
+                                .thenCompose(re -> fetch("http://" + re + "/?url=" + r.url + "&count=" + r.count)))
+            }
+
+        }
+    }
 }
 
 
