@@ -174,7 +174,7 @@ public class HttpServer extends AllDirectives {
               return completeWithFuture(
                       Patterns.ask(storeActor, new GetRandomServer(), Duration.ofSeconds(10))
                               .thenApply(m -> (String) m)
-                              .thenCompose(req -> fetch(req + r.url + r.count)));}
+                              .thenCompose(re -> fetch(re + r.url + r.count)));}
           }
 }
 
