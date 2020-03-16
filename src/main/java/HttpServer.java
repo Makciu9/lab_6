@@ -159,7 +159,7 @@ public class HttpServer extends AllDirectives {
                     )
             );
         }*/
-      private  Route createRoute() {
+      public  Route createRoute() {
           return
                   route(
                           req(() ->
