@@ -92,7 +92,7 @@ public class HttpServer extends AllDirectives {
 
 
 
-    public class ZooInit implements Watcher {
+    public static class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
         private final ActorRef store;
