@@ -41,11 +41,10 @@ public class HttpServer extends AllDirectives {
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StoreServer.class));
 
-        ZooWatcher  zooWat = new ZooWatcher;
+        ZooWatcher  zooWat = new ZooWatcher();
         http = Http.get(system);
 
         final ActorMaterializer materializer = ActorMaterializer.create(system);
-        ///HttpServer app = new HttpServer();
 
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
         ZooInit app = new ZooInit(zoo, storeActor, http);
