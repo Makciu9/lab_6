@@ -17,14 +17,10 @@ import akka.http.javadsl.server.AllDirectives;
 
 import java.io.IOException;
 import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.CompletionStage;
 
-import akka.actor.ActorSystem;
-
-import static akka.http.javadsl.server.Directives.*;
 import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
@@ -164,12 +160,12 @@ public class HttpServer extends AllDirectives {
                   route(
                           req(() ->
                                   parameter("url", (url) ->
-                                          parameter("count", (count) -> Requst(new Request(url, count)))
+                                          parameter("count", (count) -> SortRequest(new Request(url, count)))
                           )
                   )
                   );
       }
-          private SortRequst(Request r){
+          private Route SortRequest(Request r){
           if (r.count <= 0){
               System.out.println("END");
               return completeWithFuture(fetch(r.getUrl()));
