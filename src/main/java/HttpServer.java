@@ -29,8 +29,6 @@ public class HttpServer extends AllDirectives {
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         final String port = args[0];
         final String LOCALHOST = "localhost";
-        //Scanner in = new Scanner(System.in);
-        ///final port = in.nextInt();
 
         ActorSystem system = ActorSystem.create("routs");
         ActorRef storeActor = system.actorOf(Props.create(StorageActor.class));
