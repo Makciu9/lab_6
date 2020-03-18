@@ -27,11 +27,12 @@ import static akka.http.javadsl.server.Directives.completeWithFuture;
 public class HttpServer extends AllDirectives {
     //private  ActorRef storeActor;
     //private  Http http;
-    private  final String LOCALHOST = "localhost";
-    private  int port;
+    private static final String LOCALHOST = "localhost";
+    private static String port;
+    //private  int port;
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
-        final String port = args[0];
+        port = args[0];
         //Scanner in = new Scanner(System.in);
         ///final port = in.nextInt();
 
@@ -53,7 +54,7 @@ public class HttpServer extends AllDirectives {
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost(LOCALHOST, port),
+                ConnectHttp.toHost(LOCALHOST, Integer.parseInt(port)),
                 materialize
         );
         System.out.println("start" + port);
