@@ -33,6 +33,7 @@ public  class ZooInit implements Watcher {
                 CreateMode.EPHEMERAL_SEQUENTIAL);
         store.tell(new AddServer(LOCALHOST+ ":" + port), ActorRef.noSender());
         System.out.println(path);
+        System.out.println(port);
 
 
 
@@ -41,6 +42,7 @@ public  class ZooInit implements Watcher {
     private void GetServers() throws KeeperException, InterruptedException {
         System.out.println("Get -> actor");
         List<String> servers = zoo.getChildren("/serverspo", this);
+        //нет детей
         System.out.println(servers+"few");
         store.tell(new StoreServer(servers), ActorRef.noSender());
     }
