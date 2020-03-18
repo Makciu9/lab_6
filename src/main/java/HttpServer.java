@@ -28,7 +28,6 @@ public class HttpServer extends AllDirectives {
     //private  ActorRef storeActor;
     //private  Http http;
     private static final String LOCALHOST = "localhost";
-    private static String port;
     //private  int port;
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
@@ -47,7 +46,7 @@ public class HttpServer extends AllDirectives {
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
 
         ZooInit app = new ZooInit(zoo, storeActor, http);
-        app.createZoo();
+        app.createZoo(LOCALHOST, port);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
