@@ -96,6 +96,7 @@ public class HttpServer extends AllDirectives {
             this.zoo = zoo;
             this.store = store;
             this.http = http;
+            GetServers();
         }
 
         // public static void createZoo() throws KeeperException, InterruptedException {
@@ -117,9 +118,7 @@ public class HttpServer extends AllDirectives {
 
         }
 
-        private void Getservers()
-
-        {
+        private void GetServers() throws KeeperException, InterruptedException {
             System.out.println("Get -> actor");
             List<String> servers = zoo.getChildren("/servers", this);
             System.out.println(servers);
@@ -188,11 +187,7 @@ public class HttpServer extends AllDirectives {
             // List<String> servers = zoo.getChildren("/servers", a -> {
             //  List<String> servers = new ArrayList<>();
             try {
-                System.out.println("Get -> actor");
-                List<String> servers = zoo.getChildren("/servers", this);
-                System.out.println(servers);
-                store.tell(new StoreServer(servers), ActorRef.noSender());
-
+                GetServers();
             } catch (KeeperException | InterruptedException e) {
                 e.printStackTrace();
             }
