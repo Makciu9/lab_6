@@ -30,7 +30,7 @@ public class HttpServer extends AllDirectives {
     private static final String LOCALHOST = "localhost";
     private static int port;
 
-    public void main(String[] args) throws KeeperException, InterruptedException, IOException {
+    public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         String i = args[0];
         Scanner in = new Scanner(System.in);
         port = in.nextInt();
