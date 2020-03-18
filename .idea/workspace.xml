@@ -47,13 +47,17 @@
       </method>
     </configuration>
     <configuration name="8082" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
+      <option name="PROGRAM_PARAMETERS" value="8082" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="8083" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
+      <option name="PROGRAM_PARAMETERS" value="8083" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
