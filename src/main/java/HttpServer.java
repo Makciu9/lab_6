@@ -87,7 +87,7 @@ public class HttpServer extends AllDirectives {
     }
 
 
-    public  class ZooInit implements Watcher {
+   /* public  class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
         private ActorRef store;
@@ -136,7 +136,7 @@ public class HttpServer extends AllDirectives {
             return http.singleRequest(HttpRequest.create(url));
         }
 
-        /*  private  Route createRoute() {
+          private  Route createRoute() {
               return
                       route(
                       req(() ->
@@ -156,7 +156,7 @@ public class HttpServer extends AllDirectives {
                               )
                       )
               );
-          }*/
+          }
         public Route createRoute() {
             return
                     route(
@@ -193,7 +193,7 @@ public class HttpServer extends AllDirectives {
                 e.printStackTrace();
             }
         }
-    }
+    }model*/
 }
 
 
