@@ -9,7 +9,7 @@ import java.util.Random;
 
 public class StorageActor extends AbstractActor {
     private List<String> listServers;
-    private 
+    private Random random = new Random();
 
     @Override
         public Receive createReceive() {
@@ -30,7 +30,7 @@ public class StorageActor extends AbstractActor {
 
     private String getRanS() {
         System.out.println((listServers.size()) + "ewfwedfqw");
-        return listServers.get((int) Math.random()*((listServers.size())));
+        return listServers.get(random);
     }
 
 }
