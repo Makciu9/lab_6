@@ -56,32 +56,12 @@ public  class ZooInit implements Watcher {
 
 
 
-    //  final Http http = Http.get(context().system());
+
     CompletionStage<HttpResponse> fetch(String url) {
         return http.singleRequest(HttpRequest.create(url));
     }
 
-    /*  private  Route createRoute() {
-          return
-                  route(
-                  req(() ->
-                          parameter("url", (url) ->
-                                  parameter("count", (count) -> {
-                                              if (count <= 0 ) {
-                                                  System.out.print("end");
-                                                 return completeWithFuture(url);
-                                              } else {
-                                                  count-=1;
-                                                  return completeWithFuture(
-                                                      Patterns.ask(storeActor, "", Duration.ofSeconds(10))
-                                                              .thenApply(m -> m)
-                                                              .thenCompose(m -> m + "/ | /" + r));}
-                                          }
-                                  )
-                          )
-                  )
-          );
-      }*/
+
     public Route createRoute() {
         return
                 route(
@@ -110,8 +90,6 @@ public  class ZooInit implements Watcher {
 
     @Override
     public void process(WatchedEvent event) {
-        // List<String> servers = zoo.getChildren("/servers", a -> {
-        //  List<String> servers = new ArrayList<>();
         try {
             GetServers();
         } catch (KeeperException | InterruptedException e) {
