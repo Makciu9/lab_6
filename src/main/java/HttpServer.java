@@ -110,7 +110,7 @@ public class HttpServer extends AllDirectives {
                     Integer.toString(port).getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
-            store.tell(new AddServer())
+            store.tell(new AddServer(LOCALHOST:))
 
 
 
