@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="097c0d3b-0a30-4b28-8303-57b73dbe6db7" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ZooInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZooInit.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -30,7 +31,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.8081">
     <configuration name="8081" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
@@ -39,6 +40,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="8082" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="HttpServer" />
+      <module name="zookeeper-labs" />
+      <option name="PROGRAM_PARAMETERS" value="8082" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="8083" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="HttpServer" />
+      <module name="zookeeper-labs" />
+      <option name="PROGRAM_PARAMETERS" value="8083" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.8081" />
+      <item itemvalue="Application.8082" />
+      <item itemvalue="Application.8083" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
