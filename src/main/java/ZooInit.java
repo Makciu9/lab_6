@@ -69,6 +69,7 @@ public  class ZooInit implements Watcher {
                     Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(5))
                             .thenApply(m -> (String) m)
                             .thenCompose(re -> fetch("http://" + re + "/?url=" + r.url + "&count=" + r.count)));
+           
         }
 
     }
