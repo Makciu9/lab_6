@@ -47,7 +47,7 @@ public class HttpServer extends AllDirectives {
         ZooInit app = new ZooInit(zoo, storeActor, http);
         app.createZoo();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
-        
+
        // app.createZoo();
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
@@ -111,6 +111,7 @@ public class HttpServer extends AllDirectives {
                     Integer.toString(port).getBytes(),
                     ZooDefs.Ids.OPEN_ACL_UNSAFE,
                     CreateMode.EPHEMERAL_SEQUENTIAL);
+            
 
         }
 
