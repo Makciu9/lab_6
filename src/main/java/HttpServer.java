@@ -44,7 +44,7 @@ public class HttpServer extends AllDirectives {
         final ActorMaterializer materialize = ActorMaterializer.create(system);
 
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
-        
+
         ZooInit app = new ZooInit(zoo, storeActor, http);
         app.createZoo();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
