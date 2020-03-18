@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="e30a1d40-57a6-4d75-b0e9-68e2831f0796" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ZooInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ZooInit.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,7 +37,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.8082">
     <configuration name="8081" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
@@ -47,6 +46,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="8082" type="Application" factoryName="Application">
+      <module name="zookeeper-labs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.8081" />
+      <item itemvalue="Application.8082" />
+    </list>
   </component>
   <component name="SvnConfiguration">
     <configuration />
