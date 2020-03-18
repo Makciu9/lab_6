@@ -24,7 +24,7 @@ import java.util.concurrent.CompletionStage;
 import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
-public class HttpServer extends AllDirectives {
+public class HttpServer {
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         final String port = args[0];
