@@ -159,7 +159,7 @@ public class HttpServer extends AllDirectives {
         public Route createRoute() {
             return
                     route(
-                            req(() ->
+                            pathSingleSlash(() ->
                                     parameter("url", (url) ->
                                             parameter("count", (count) -> SortRequest(new Request(url, count)))
                                     )
