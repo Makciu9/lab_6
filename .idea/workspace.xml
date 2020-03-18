@@ -1,26 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="ChangeListManager">
-    <list default="true" id="e30a1d40-57a6-4d75-b0e9-68e2831f0796" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
-    <option name="SHOW_DIALOG" value="false" />
-    <option name="HIGHLIGHT_CONFLICTS" value="true" />
-    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
-    <option name="LAST_RESOLUTION" value="IGNORE" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="ProjectId" id="1ZIwEpq1qTytOyyUAjobQ6oYQJq" />
   <component name="PropertiesComponent">
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
@@ -37,61 +16,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.8083">
-    <configuration name="8081" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="HttpServer" />
-      <module name="zookeeper-labs" />
-      <option name="PROGRAM_PARAMETERS" value="8081" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="8082" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="HttpServer" />
-      <module name="zookeeper-labs" />
-      <option name="PROGRAM_PARAMETERS" value="8082" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="8083" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="HttpServer" />
-      <module name="zookeeper-labs" />
-      <option name="PROGRAM_PARAMETERS" value="8083" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <list>
-      <item itemvalue="Application.8081" />
-      <item itemvalue="Application.8082" />
-      <item itemvalue="Application.8083" />
-    </list>
-  </component>
-  <component name="SvnConfiguration">
-    <configuration />
-  </component>
-  <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="e30a1d40-57a6-4d75-b0e9-68e2831f0796" name="Default Changelist" comment="" />
-      <created>1584539806539</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1584539806539</updated>
-    </task>
-    <servers />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="COLUMN_ORDER" />
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
   </component>
 </project>
