@@ -41,7 +41,7 @@ public  class ZooInit implements Watcher {
     private void GetServers() throws KeeperException, InterruptedException {
         System.out.println("Get -> actor");
         List<String> servers = zoo.getChildren("/serverspo", this);
-        System.out.println(servers);
+        System.out.println(servers+"few");
         store.tell(new StoreServer(servers), ActorRef.noSender());
     }
 
