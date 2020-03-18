@@ -71,6 +71,7 @@ public  class ZooInit implements Watcher {
                             .thenCompose(re ->{
                                 System.out.println("http://" + re + "/?url=" + r.url + "&count=" + r.count));
                                 fetch("http://" + re + "/?url=" + r.url + "&count=" + r.count);
+                            }
                             }));
 
         }
