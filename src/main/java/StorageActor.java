@@ -28,6 +28,7 @@ public class StorageActor extends AbstractActor {
 }
 
     private String getRanS() {
+        System.out.println((listServers.size()));
         return listServers.get((int) Math.random()*((listServers.size())));
     }
 
