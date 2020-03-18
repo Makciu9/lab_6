@@ -47,6 +47,7 @@ public class HttpServer extends AllDirectives {
         ZooInit app = new ZooInit(zoo, storeActor, http);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
+        app.
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
