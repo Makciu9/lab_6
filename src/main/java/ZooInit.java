@@ -10,6 +10,8 @@ import java.time.Duration;
 import java.util.List;
 import java.util.concurrent.CompletionStage;
 
+import static akka.http.javadsl.server.Directives.*;
+
 public  class ZooInit implements Watcher {
 
     private final ZooKeeper zoo;
@@ -30,9 +32,9 @@ public  class ZooInit implements Watcher {
     //                  CreateMode.EPHEMERAL_SEQUENTIAL);
 //
     //  }
-    public void createZoo() throws KeeperException, InterruptedException {
-        String path = zoo.create("/servers" + LOCALHOST + ":" + Integer.toString(port).getBytes(),
-                Integer.toString(port).getBytes(),
+    public void createZoo(String LOCALHOST, String port) throws KeeperException, InterruptedException {
+        String path = zoo.create("/servers" + LOCALHOST + ":" + Integer.toString(Integer.parseInt(port)).getBytes(),
+                port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
         store.tell(new AddServer(LOCALHOST+ ":" + port), ActorRef.noSender());
