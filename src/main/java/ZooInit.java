@@ -27,7 +27,7 @@ public  class ZooInit implements Watcher {
 
 
     public void createZoo(String LOCALHOST, String port) throws KeeperException, InterruptedException {
-        String path = zoo.create("/servers2/" + LOCALHOST + ":" + port + "|",
+        String path = zoo.create("/servers3/" + LOCALHOST + ":" + port + "|",
                 port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
@@ -41,7 +41,7 @@ public  class ZooInit implements Watcher {
 
     private void GetServers() throws KeeperException, InterruptedException {
         System.out.println("Get -> actor");
-        List<String> servers = zoo.getChildren("/servers2", this);
+        List<String> servers = zoo.getChildren("/servers3", this);
         //нет детей
         System.out.println(servers+"few");
         store.tell(new StoreServer(servers), ActorRef.noSender());
