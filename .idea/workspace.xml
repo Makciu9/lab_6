@@ -37,7 +37,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.8082">
+  <component name="RunManager" selected="Application.8083">
     <configuration name="8081" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
@@ -52,9 +52,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="8083" type="Application" factoryName="Application">
+      <module name="zookeeper-labs" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.8081" />
       <item itemvalue="Application.8082" />
+      <item itemvalue="Application.8083" />
     </list>
   </component>
   <component name="SvnConfiguration">
