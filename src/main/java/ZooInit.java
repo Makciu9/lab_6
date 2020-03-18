@@ -73,7 +73,7 @@ public  class ZooInit implements Watcher {
         }
 
     }
-    private String SerReq()
+    private String SerReq(String url, String r)
 
 
     @Override
