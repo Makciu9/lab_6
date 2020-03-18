@@ -68,7 +68,7 @@ public  class ZooInit implements Watcher {
             return completeWithFuture(
                     Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(5))
                             .thenApply(m -> (String) m)
-                            .thenCompose(re -> fetch(SerReq(re, r))
+                            .thenCompose(re -> fetch(SerReq(re, r));
 
         }
 
