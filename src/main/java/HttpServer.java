@@ -47,6 +47,7 @@ public class HttpServer extends AllDirectives {
 
         ZooInit app = new ZooInit(zoo, storeActor, http);
         app.createZoo();
+
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
 
@@ -84,7 +85,6 @@ public class HttpServer extends AllDirectives {
         }*/
 
     }
-
 
 
     public  class ZooInit implements Watcher {
