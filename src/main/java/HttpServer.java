@@ -36,7 +36,7 @@ public class HttpServer extends AllDirectives {
         ///final port = in.nextInt();
 
         ActorSystem system = ActorSystem.create("routs");
-        storeActor = system.actorOf(Props.create(StorageActor.class));
+        ActorRef storeActor = system.actorOf(Props.create(StorageActor.class));
 
         ZooWatcher zooWat = new ZooWatcher();
         http = Http.get(system);
