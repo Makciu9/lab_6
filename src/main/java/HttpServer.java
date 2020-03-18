@@ -47,7 +47,7 @@ public class HttpServer extends AllDirectives {
         ZooInit app = new ZooInit(zoo, storeActor, http);
 
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
-        app.
+        app.createZoo();
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
@@ -89,7 +89,7 @@ public class HttpServer extends AllDirectives {
     public class ZooInit implements Watcher {
 
         private final ZooKeeper zoo;
-        private final ActorRef store;
+        private ActorRef store;
         private final Http http;
 
         ZooInit(ZooKeeper zoo, ActorRef store, Http http) throws InterruptedException, KeeperException {
