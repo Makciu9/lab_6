@@ -48,11 +48,6 @@ public  class ZooInit implements Watcher {
     }
 
 
-
-
-
-
-
     CompletionStage<HttpResponse> fetch(String url) {
         return http.singleRequest(HttpRequest.create(url));
     }
