@@ -38,7 +38,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.8081">
+  <component name="RunManager" selected="Application.8082">
     <configuration name="8081" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="HttpServer" />
       <module name="zookeeper-labs" />
