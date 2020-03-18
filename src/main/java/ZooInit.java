@@ -36,7 +36,7 @@ public  class ZooInit implements Watcher {
         String path = zoo.create("/servers5/" + LOCALHOST + ":" + port,
                 port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
-                CreateMode.EPHEMERAL_SEQUENTIAL);
+                CreateMode.EPHEMERAL);
         store.tell(new AddServer(LOCALHOST+ ":" + port), ActorRef.noSender());
     }
 
