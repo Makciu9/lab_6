@@ -18,7 +18,7 @@ public  class ZooInit implements Watcher {
     private ActorRef store;
     private final Http http;
 
-    ZooInit(ZooKeeper zoo, ActorRef store, Http http) throws InterruptedException, KeeperException {
+    ZooInit(ZooKeeper zoo, ActorRef store, Http http) throws KeeperException, InterruptedException {
         this.zoo = zoo;
         this.store = store;
         this.http = http;
