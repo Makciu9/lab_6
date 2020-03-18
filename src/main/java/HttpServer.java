@@ -25,15 +25,15 @@ import static akka.http.javadsl.server.Directives.completeWithFuture;
 
 
 public class HttpServer extends AllDirectives {
-    private  ActorRef storeActor;
-    private  Http http;
-    private  final String LOCALHOST = "localhost";
-    private  int port;
+    //private  ActorRef storeActor;
+    //private  Http http;
+    //private  final String LOCALHOST = "localhost";
+    //private  int port;
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         String i = args[0];
         Scanner in = new Scanner(System.in);
-        port = in.nextInt();
+        final port = in.nextInt();
 
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StorageActor.class));
