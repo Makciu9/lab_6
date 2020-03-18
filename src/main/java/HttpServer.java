@@ -48,7 +48,6 @@ public class HttpServer extends AllDirectives {
         app.createZoo();
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
-       // app.createZoo();
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
@@ -126,20 +125,7 @@ public class HttpServer extends AllDirectives {
 
 
 
-        @Override
-        public void process(WatchedEvent event) {
-            // List<String> servers = zoo.getChildren("/servers", a -> {
-            //  List<String> servers = new ArrayList<>();
-            try {
-                System.out.println("Get -> actor");
-                List<String> servers = zoo.getChildren("/servers", this);
-                System.out.println(servers);
-                store.tell(new StoreServer(servers), ActorRef.noSender());
 
-            } catch (KeeperException | InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
 
 
         //  final Http http = Http.get(context().system());
@@ -191,6 +177,22 @@ public class HttpServer extends AllDirectives {
                                 .thenCompose(re -> fetch("http://" + re + "/?url=" + r.url + "&count=" + r.count)))
             }
 
+        }
+
+
+        @Override
+        public void process(WatchedEvent event) {
+            // List<String> servers = zoo.getChildren("/servers", a -> {
+            //  List<String> servers = new ArrayList<>();
+            try {
+                System.out.println("Get -> actor");
+                List<String> servers = zoo.getChildren("/servers", this);
+                System.out.println(servers);
+                store.tell(new StoreServer(servers), ActorRef.noSender());
+
+            } catch (KeeperException | InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
