@@ -38,11 +38,6 @@ public  class ZooInit implements Watcher {
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
         store.tell(new AddServer(LOCALHOST+ ":" + port), ActorRef.noSender());
-        System.out.println(path);
-        System.out.println(port);
-
-
-
     }
 
 
