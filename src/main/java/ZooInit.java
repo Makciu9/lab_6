@@ -33,7 +33,7 @@ public  class ZooInit implements Watcher {
 //
     //  }
     public void createZoo(String LOCALHOST, String port) throws KeeperException, InterruptedException {
-        String path = zoo.create("/servers" + LOCALHOST + ":" + Integer.toString(Integer.parseInt(port)).getBytes(),
+        String path = zoo.create("/servers" + LOCALHOST + ":" + port,
                 port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL_SEQUENTIAL);
