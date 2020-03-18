@@ -9,6 +9,7 @@ import java.util.Random;
 
 public class StorageActor extends AbstractActor {
     private List<String> listServers;
+    private 
 
     @Override
         public Receive createReceive() {
