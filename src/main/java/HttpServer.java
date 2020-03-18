@@ -31,9 +31,9 @@ public class HttpServer extends AllDirectives {
     //private  int port;
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
-        String i = args[0];
-        Scanner in = new Scanner(System.in);
-        final port = in.nextInt();
+        final String port = args[0];
+        //Scanner in = new Scanner(System.in);
+        ///final port = in.nextInt();
 
         ActorSystem system = ActorSystem.create("routs");
         storeActor = system.actorOf(Props.create(StorageActor.class));
