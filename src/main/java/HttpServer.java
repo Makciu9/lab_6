@@ -41,10 +41,9 @@ public class HttpServer extends AllDirectives {
         ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
 
         final Http http = Http.get(system);
-        
+
         ZooInit app = new ZooInit(zoo, storeActor, http);
         app.createZoo(LOCALHOST, port);
-
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
 
