@@ -71,7 +71,7 @@ public  class ZooInit implements Watcher {
                             //получаем новый url
                             .thenApply(m -> (String) m)
                             .thenCompose(re -> fetch(SerReq(re, r))));
-            //запрос
+            //запрос с счетчикам на один меньше
 
         }
 
