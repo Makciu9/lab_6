@@ -68,8 +68,10 @@ public  class ZooInit implements Watcher {
             r.next();
             return completeWithFuture(
                     Patterns.ask(store, new GetRandomServer(), Duration.ofSeconds(5))
+                            //получаем новый url
                             .thenApply(m -> (String) m)
                             .thenCompose(re -> fetch(SerReq(re, r))));
+            //
 
         }
 
