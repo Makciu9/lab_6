@@ -63,7 +63,7 @@ public  class ZooInit implements Watcher {
         if (r.count <= 0) {
             System.out.println("END");
             return completeWithFuture(fetch(r.url));
-            //запрос
+            //запрос по url
         } else {
             r.next();
             return completeWithFuture(
