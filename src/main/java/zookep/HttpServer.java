@@ -29,7 +29,7 @@ public class HttpServer {
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         final String port = args[0];
-        final String LOCALHOST = "localhost";
+
 
         ActorSystem system = ActorSystem.create("routs");
         ActorRef storeActor = system.actorOf(Props.create(StorageActor.class));
@@ -42,7 +42,7 @@ public class HttpServer {
         final Http http = Http.get(system);
 
         ZooInit app = new ZooInit(zoo, storeActor, http);
-        app.createZoo(LOCALHOST, port);
+        app.createZoo(localhost, port);
         final Flow<HttpRequest, HttpResponse, NotUsed> routeFlow = app.createRoute().flow(system, materialize);
 
 
