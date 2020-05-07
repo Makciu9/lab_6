@@ -18,7 +18,6 @@ public class StorageActor extends AbstractActor {
                     .match(StoreServer.class, m -> this.listServers=m.getServerList())
                     .match(AddServer.class, m ->{
                         listServers.add(m.getUrl());
-                        //System.out.println("receive message! " + m.toString());
                     })
                     .match(GetRandomServer.class, req -> {
                           String ranS = getRanS();
