@@ -1,4 +1,5 @@
 package zookep;
+import zookep.Const;
 import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -23,6 +24,7 @@ import java.util.Scanner;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.completeWithFuture;
+import static zookep.Const.localhost;
 
 
 public class HttpServer {
@@ -48,7 +50,7 @@ public class HttpServer {
 
         final CompletionStage<ServerBinding> binding = http.bindAndHandle(
                 routeFlow,
-                ConnectHttp.toHost(LOCALHOST, Integer.parseInt(port)),
+                ConnectHttp.toHost(localhost, Integer.parseInt(port)),
                 materialize
         );
         System.out.println("start" + port);

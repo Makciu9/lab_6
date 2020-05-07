@@ -1,5 +1,5 @@
 package zookep;
 
 public class Const {
-    final String localhost = "localhost";
+    static final String localhost = "localhost";
 }
