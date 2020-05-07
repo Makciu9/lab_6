@@ -1,5 +1,4 @@
 package zookep;
-import zookep.Const;
 import akka.NotUsed;
 import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
@@ -9,21 +8,11 @@ import akka.http.javadsl.Http;
 import akka.http.javadsl.ServerBinding;
 import akka.http.javadsl.model.HttpRequest;
 import akka.http.javadsl.model.HttpResponse;
-import akka.http.javadsl.server.Route;
-import akka.pattern.Patterns;
 import akka.stream.ActorMaterializer;
 import akka.stream.javadsl.Flow;
-import org.apache.zookeeper.Watcher;
 import org.apache.zookeeper.*;
-import akka.http.javadsl.server.AllDirectives;
-
 import java.io.IOException;
-import java.time.Duration;
-import java.util.List;
-import java.util.Scanner;
 import java.util.concurrent.CompletionStage;
-
-import static akka.http.javadsl.server.Directives.completeWithFuture;
 import static zookep.Const.localhost;
 
 
