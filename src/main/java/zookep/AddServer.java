@@ -1,3 +1,4 @@
+package zookep
 public class AddServer {
     private String url;
 
