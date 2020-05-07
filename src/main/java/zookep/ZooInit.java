@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.concurrent.CompletionStage;
 
 import static akka.http.javadsl.server.Directives.*;
+import static zookep.Const.*;
 
 public  class ZooInit implements Watcher {
 
@@ -27,18 +28,17 @@ public  class ZooInit implements Watcher {
     }
 
     private void GetServers() throws KeeperException, InterruptedException {
-        System.out.println("Get -> actor");
-        List<String> servers = zoo.getChildren("/servers5", this);
+        List<String> servers = zoo.getChildren(path, this);
         System.out.println(servers);
         store.tell(new StoreServer(servers), ActorRef.noSender());
     }
 
-    public void createZoo(String LOCALHOST, String port) throws KeeperException, InterruptedException {
-        String path = zoo.create("/servers5/" + LOCALHOST + ":" + port,
+    public void createZoo(String localhost, String port) throws KeeperException, InterruptedException {
+        String path = zoo.create(pathC + localhost + ":" + port,
                 port.getBytes(),
                 ZooDefs.Ids.OPEN_ACL_UNSAFE,
                 CreateMode.EPHEMERAL);
-        store.tell(new AddServer(LOCALHOST+ ":" + port), ActorRef.noSender());
+        store.tell(new AddServer(localhost+ ":" + port), ActorRef.noSender());
     }
 
 
@@ -62,7 +62,6 @@ public  class ZooInit implements Watcher {
 
     private Route SortRequest(Request r) {
         if (r.count <= 0) {
-            System.out.println("END");
             return completeWithFuture(fetch(r.url));
             //запрос по url
         } else {

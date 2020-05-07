@@ -13,14 +13,12 @@ import akka.stream.javadsl.Flow;
 import org.apache.zookeeper.*;
 import java.io.IOException;
 import java.util.concurrent.CompletionStage;
-import static zookep.Const.localhost;
-
+import static zookep.Const.*;
 
 public class HttpServer {
 
     public static void main(String[] args) throws KeeperException, InterruptedException, IOException {
         final String port = args[0];
-
 
         ActorSystem system = ActorSystem.create("routs");
         ActorRef storeActor = system.actorOf(Props.create(StorageActor.class));
@@ -28,7 +26,7 @@ public class HttpServer {
         final ActorMaterializer materialize = ActorMaterializer.create(system);
 
         ZooWatcher zooWat = new ZooWatcher();
-        ZooKeeper zoo = new ZooKeeper("127.0.0.1:2181", 3000, zooWat);
+        ZooKeeper zoo = new ZooKeeper(zoo_host, time_out, zooWat);
 
         final Http http = Http.get(system);
 
