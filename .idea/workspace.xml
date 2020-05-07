@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d3e0d562-37b6-4d58-a39b-c0efe3fddcba" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/zookep/Const.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zookep/Const.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zookep/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zookep/HttpServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/zookep/ZooInit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/zookep/ZooInit.java" afterDir="false" />
-    </list>
+    <list default="true" id="d3e0d562-37b6-4d58-a39b-c0efe3fddcba" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
